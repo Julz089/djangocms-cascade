@@ -104,6 +104,7 @@ class InlineCascadeElement(models.Model):
     cascade_element = models.ForeignKey(
         CascadeElement,
         related_name='inline_elements',
+        on_delete=models.CASCADE
     )
 
     glossary = JSONField(blank=True, default={})
@@ -113,7 +114,7 @@ class InlineCascadeElement(models.Model):
 
 
 class SortableInlineCascadeElement(models.Model):
-    cascade_element = models.ForeignKey(CascadeElement, related_name='sortinline_elements')
+    cascade_element = models.ForeignKey(CascadeElement, related_name='sortinline_elements', on_delete=models.CASCADE)
     glossary = JSONField(blank=True, default={})
     order = models.PositiveIntegerField(verbose_name=_("Sort by"), db_index=True)
 
@@ -140,6 +141,7 @@ class PluginExtraFields(models.Model):
     site = models.ForeignKey(
         Site,
         verbose_name=_("Site"),
+        on_delete=models.CASCADE
     )
 
     allow_id_tag = models.BooleanField(default=False)
@@ -271,7 +273,8 @@ class IconFont(models.Model):
     )
     config_data = JSONField()
     zip_file = FilerFileField(
-        help_text=_('Upload a zip file created on <a href="http://fontello.com/" target="_blank">Fontello</a> containing fonts.')
+        help_text=_('Upload a zip file created on <a href="http://fontello.com/" target="_blank">Fontello</a> containing fonts.'),
+        on_delete=models.CASCADE
     )
     font_folder = FilePathField(allow_files=False, allow_folders=True)
 

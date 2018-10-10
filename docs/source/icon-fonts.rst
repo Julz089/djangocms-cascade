@@ -46,7 +46,7 @@ this special setting to our configuration:
 
 .. code-block:: python
 
-	from django.core.urlresolvers import reverse_lazy
+	from django.urls import reverse_lazy
 	from cmsplugin_cascade.utils import format_lazy
 
 	CKEDITOR_SETTINGS = {
