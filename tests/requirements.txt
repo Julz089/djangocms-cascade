@@ -9,9 +9,9 @@ django-mptt==0.8.7
 django-polymorphic>=2.0.2
 django-sekizai==0.10.0
 django-treebeard==4.3
-djangocms-text-ckeditor==3.4.0
+git+https://github.com/NetDoktorDE/djangocms-text-ckeditor.git@use_current_html5lib#egg=djangocms-text-ckeditor
 easy-thumbnails==2.5
-html5lib==0.9999999
+html5lib==1.0.1
 jsonfield==1.0.3
 lxml==4.2.5
 pluggy==0.3.1
