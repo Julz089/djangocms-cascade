@@ -15,6 +15,13 @@ env:
   - DJANGO='django20' CMS='cmsDEV'
   - DJANGO='django21' CMS='cmsDEV'
 
+matrix:
+  exclude:
+    - python: 2.7
+      env: DJANGO='django20' CMS='cmsDEV'
+    - python: 2.7
+      env: DJANGO='django21' CMS='cmsDEV'
+
 install:
   - pip install tox
 
