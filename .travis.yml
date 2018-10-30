@@ -12,8 +12,8 @@ env:
   - DJANGO='django110' CMS='cms34'
   - DJANGO='django111' CMS='cms34'
   - DJANGO='django111' CMS='cms35'
-  - DJANGO='django20' CMS='cms35'
-  - DJANGO='django21' CMS='cms35'
+  - DJANGO='django20' CMS='cmsDEV'
+  - DJANGO='django21' CMS='cmsDEV'
 
 install:
   - pip install tox
