@@ -7,7 +7,10 @@ import json
 
 from django.contrib.auth import get_user_model
 from django.test.client import Client
-from django.urls import reverse, resolve
+try:
+    from django.urls import reverse, resolve
+except ImportError:
+    from django.core.urlresolvers import reverse, resolve
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 from filer.admin.clipboardadmin import ajax_upload

@@ -4,8 +4,10 @@ from __future__ import unicode_literals
 import os
 import sys
 
-from django.urls import reverse_lazy
-
+try:
+    from django.urls import reverse_lazy
+except ImportError:
+    from django.core.urlresolvers import reverse_lazy
 from cmsplugin_cascade.extra_fields.config import PluginExtraFieldsConfig
 from cmsplugin_cascade.utils import format_lazy
 

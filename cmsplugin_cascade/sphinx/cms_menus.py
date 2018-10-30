@@ -6,7 +6,10 @@ import json
 import os
 
 from django.conf import settings
-from django.urls import reverse_lazy
+try:
+    from django.urls import reverse_lazy
+except ImportError:
+    from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from cms.menu_bases import CMSAttachMenu

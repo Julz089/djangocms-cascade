@@ -14,6 +14,8 @@ CLASSIFIERS = [
     'Framework :: Django :: 1.9',
     'Framework :: Django :: 1.10',
     'Framework :: Django :: 1.11',
+    'Framework :: Django :: 2.0',
+    'Framework :: Django :: 2.1',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: MIT License',
     'Operating System :: OS Independent',
@@ -34,7 +36,7 @@ setup(
     url='https://github.com/jrief/djangocms-cascade',
     packages=find_packages(exclude=['examples', 'docs', 'tests']),
     install_requires=[
-        'django>=1.9,<2.0',
+        'django>=1.9',
         'django-classy-tags>=0.8',
         'django-cms>=3.4,<4',
         'djangocms-text-ckeditor>=3.4',

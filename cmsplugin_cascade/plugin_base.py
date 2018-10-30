@@ -8,9 +8,13 @@ from django.forms import MediaDefiningClass
 from django.utils import six
 from django.utils.functional import lazy
 from django.utils.module_loading import import_string
-from django.utils.text import format_lazy
+try:
+    from django.utils.translation import string_concat
+except ImportError:
+    from django.utils.text import format_lazy
+    def string_concat(*strings):
+        return format_lazy('{}' * len(strings), *strings)
 from django.utils.safestring import SafeText, mark_safe
-
 from cms.plugin_base import CMSPluginBaseMetaclass, CMSPluginBase
 from cms.utils.compat.dj import is_installed
 
@@ -163,8 +167,8 @@ class CascadePluginBaseMetaclass(CascadePluginMixinMetaclass, CMSPluginBaseMetac
                 reversion.revisions.register(base_model)
         # handle ambiguous plugin names by appending a symbol
         if 'name' in attrs and app_settings.CMSPLUGIN_CASCADE['plugin_prefix']:
-            attrs['name'] = mark_safe_lazy(format_lazy('{}&nbsp;{}',
-                app_settings.CMSPLUGIN_CASCADE['plugin_prefix'], attrs['name']))
+            attrs['name'] = mark_safe_lazy(string_concat(
+                app_settings.CMSPLUGIN_CASCADE['plugin_prefix'], "&nbsp;", attrs['name']))
 
         register_stride(name, bases, attrs, model_mixins)
         if name == 'CascadePluginBase':

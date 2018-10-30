@@ -4,7 +4,10 @@ from __future__ import unicode_literals
 import json
 from bs4 import BeautifulSoup
 from django.contrib.auth import get_user_model
-from django.urls import reverse
+try:
+    from django.urls import reverse
+except ImportError:
+    from django.core.urlresolvers import reverse
 from django.http import QueryDict
 
 from cms.api import add_plugin
