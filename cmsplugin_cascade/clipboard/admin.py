@@ -27,7 +27,7 @@ class JSONAdminWidget(widgets.Textarea):
         attrs = {'cols': '40', 'rows': '3'}
         super(JSONAdminWidget, self).__init__(attrs)
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         if value is None:
             value = ''
         if DJANGO_VERSION < (1, 11):

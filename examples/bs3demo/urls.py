@@ -13,7 +13,7 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/select2/', include('django_select2.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^cascade/$', CascadeDemoView.as_view()),
     url(r'^', include('cms.urls')),
 ]
