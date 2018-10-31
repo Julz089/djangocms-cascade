@@ -171,7 +171,7 @@ class ClipboardPluginTest(CascadeTestCase):
             self.assertEqual(response.status_code, 302)
             change_clipboard_url = response['location']
             response = self.client.get(change_clipboard_url, data)
-            soup = BeautifulSoup(response.content)
+            soup = BeautifulSoup(response.content, features="lxml")
             ul = soup.find('ul', class_='messagelist')
             self.assertEqual(ul.li.text, 'The Persisted Clipboard Content "Test saved clipboard" was added successfully. You may edit it again below.')
             self.assertEqual(CascadeClipboard.objects.all().count(), 1)

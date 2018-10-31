@@ -62,7 +62,10 @@ class IconFontTestCase(CascadeTestCase):
             self.assertEqual(resolver_match.url_name, 'cmsplugin_cascade_iconfont_change')
 
             # check the content of the uploaded file
-            icon_font = IconFont.objects.get(pk=resolver_match.args[0])
+            try:
+                icon_font = IconFont.objects.get(pk=resolver_match.args[0])
+            except IndexError:
+                icon_font = IconFont.objects.get(pk=resolver_match.kwargs['object_id'])
             self.assertEqual(icon_font.identifier, "Fontellico")
             self.assertEqual(icon_font.config_data['name'], 'fontelico')
             self.assertEqual(len(icon_font.config_data['glyphs']), 34)

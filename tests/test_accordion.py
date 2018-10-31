@@ -67,7 +67,7 @@ class AccordionPluginTest(CascadeTestCase):
         except KeyError:
             pass
         html = self.build_accordion_plugins()
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup(html, features="lxml")
         panel_group = soup.find('div', class_='panel-group')
         self.assertIsNotNone(panel_group)
 
@@ -75,6 +75,6 @@ class AccordionPluginTest(CascadeTestCase):
     def test_angular_bootstrap_accordion(self):
         app_settings.CMSPLUGIN_CASCADE['bootstrap3'].update({'template_basedir': 'angular-ui'})
         html = self.build_accordion_plugins()
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup(html, features="lxml")
         accordion = soup.find('uib-accordion')
         self.assertIsNotNone(accordion)
